@@ -11,9 +11,9 @@ const height = document.getElementById("spaceShuttleHeight");
 const rocket = document.getElementById("rocket");
 rocket.style.position = 'absolute';
 rocket.style.bottom = '0px';
-rocket.style.left = '50%';
-rocket.style.transform = 'translate(-50%, -50%)';
-let shuttleLeft = 50;
+rocket.style.left = '0px';
+// rocket.style.transform = 'translate(-50%, -50%)';
+let shuttleLeft = 0;
 let shuttleHeight = 0;
 let shuttleHeightPixels = 0;
 
@@ -25,6 +25,7 @@ takeOffButton.addEventListener("click", function (event) {
         shuttleHeight = 10000;
         if(shuttleHeight == 0){backgroundColor.style.backgroundColor = 'Green'} else {
             backgroundColor.style.backgroundColor = '#2196f3'};
+            flightStatusText.innerHTML = "We have lift-off!";
         shuttleHeightPixels = shuttleHeight * .0175;
         rocket.style.bottom = shuttleHeightPixels+'px';
         spaceShuttleHeight.innerHTML = shuttleHeight }
@@ -83,15 +84,16 @@ downButton.addEventListener("click", function (event){
 
 //left button
 const leftButton = document.getElementById("left")
-downButton.addEventListener("click", function (event){
-    shuttleLeft += 1;
-    rocket.style.left = shuttleLeft+'%'
+leftButton.addEventListener("click", function (event){
+    shuttleLeft -= 1;
+    rocket.style.left = shuttleLeft+'px'
 })
 
 //right button
 const rightButton = document.getElementById("right")
-downButton.addEventListener("click", function (event){
-    //move image
+rightButton.addEventListener("click", function (event){
+    shuttleLeft += 1;
+    rocket.style.left = shuttleLeft+'px'
 })
 
 
